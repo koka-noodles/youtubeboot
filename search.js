@@ -29,7 +29,7 @@ function verifyorder(){
   var order = document.getElementById('value').value;
   console.log(order);
 
-  var request = gapi.client.youtube.search.list({
+  var request = gapi.client.youtube.search.list({  // search 1 for stuckman
     part: 'snippet', 
     channelId: 'UCCqEeDAUf4Mg0GgEN658tkA' ,  // stuckman
     q: order ,
@@ -41,7 +41,7 @@ function verifyorder(){
   console.log("request.execute + order stuckman "+order);
 
 
-  var request = gapi.client.youtube.search.list({
+  var request = gapi.client.youtube.search.list({ // search 2 for joe
     part: 'snippet', 
     channelId: 'UCsgv2QHkT2ljEixyulzOnUQ' ,  // JOE
     q: order ,
@@ -51,6 +51,28 @@ function verifyorder(){
   // and invoke onSearchRepsonse() with the response.
   request.execute(onSearchResponseJoe);
   console.log("request.execute + order stuckman "+order);
+
+  var request = gapi.client.youtube.search.list({ // search 3 for kermode and mayo
+    part: 'snippet', 
+    channelId: 'UCCxKPNMqjnqbxVEt1tyDUsA' ,  // kermode and mayo
+    q: order ,
+    maxResults: 5
+  });
+  // Send the request to the API server,
+  // and invoke onSearchRepsonse() with the response.
+  request.execute(onSearchResponseKermode);
+  console.log("request.execute + order kermode "+order);
+
+  var request = gapi.client.youtube.search.list({ // search 4 for the escapist
+    part: 'snippet', 
+    channelId: 'UCADQiLMJMO3HUMvePgscTMg' ,  // the escapist
+    q: order ,
+    maxResults: 5
+  });
+  // Send the request to the API server,
+  // and invoke onSearchRepsonse() with the response.
+  request.execute(onSearchResponseEscapist);
+  console.log("request.execute + order escapist "+order);
 
 
 
@@ -107,7 +129,7 @@ function onSearchResponsestucky(response) { // stuckman
 }
 
 // Called automatically with the response of the YouTube API request.
-function onSearchResponseJoe(response) { // stuckman
+function onSearchResponseJoe(response) { // a joe
 
   console.log("on search response +response "+response);
   showResponse(response); 
@@ -153,6 +175,106 @@ function onSearchResponseJoe(response) { // stuckman
 
     console.log("no results");
     document.getElementById("joeytitle").innerHTML = "<h2>No results</h2>"   
+  }
+}
+
+// Called automatically with the response of the YouTube API request.
+function onSearchResponseKermode(response) { // kermode 
+
+  console.log("on search response +response "+response);
+  showResponse(response); 
+  var vnumber = response.pageInfo.totalResults;
+  var capnum = 5;   // a cap on results delt with
+
+    if(vnumber > capnum){
+      vnumber = capnum;
+      console.log("I capped the results at "+capnum)
+    }
+
+    var pnumber = 2;
+    console.log("total results = vnumber "+vnumber);
+  
+    if(vnumber > 0){
+
+      document.getElementById("kermodetitle").innerHTML = "<h2>kermode results</h2>"  
+
+      var str = JSON.stringify(response.result);
+      $('#search-container').html('<pre>' + str + '</pre>');
+
+      do {
+        var vindex = vnumber-1;
+        console.log("do loop vindex - the index of the array being pulled "+vindex);
+        console.log("do loop vnumber minus one "+vnumber);
+        //Make the up to five vids        
+        vid = response.items[vindex].id.videoId;  
+
+        player = new YT.Player('kermodeplayer'+vnumber, {
+          height: '390',
+          width: '640'
+        });
+
+        document.getElementById("kermodeplayer"+vnumber).src = "https://www.youtube.com/embed/"+vid;
+        //incement down the vnumber
+        vnumber --;
+      }
+
+      while(vnumber > 0); // the cap number is more then none    
+    }
+
+  else{
+
+    console.log("no results");
+    document.getElementById("kermodetitle").innerHTML = "<h2>No results</h2>"   
+  }
+}
+
+// Called automatically with the response of the YouTube API request.
+function onSearchResponseEscapist(response) { // the escapist
+
+  console.log("on search response +response "+response);
+  showResponse(response); 
+  var vnumber = response.pageInfo.totalResults;
+  var capnum = 5;   // a cap on results delt with
+
+    if(vnumber > capnum){
+      vnumber = capnum;
+      console.log("I capped the results at "+capnum)
+    }
+
+    var pnumber = 2;
+    console.log("total results = vnumber "+vnumber);
+  
+    if(vnumber > 0){
+
+      document.getElementById("escapisttitle").innerHTML = "<h2>The Escapist results</h2>"  
+
+      var str = JSON.stringify(response.result);
+      $('#search-container').html('<pre>' + str + '</pre>');
+
+      do {
+        var vindex = vnumber-1;
+        console.log("do loop vindex - the index of the array being pulled "+vindex);
+        console.log("do loop vnumber minus one "+vnumber);
+        //Make the up to five vids        
+        vid = response.items[vindex].id.videoId;  
+
+        player = new YT.Player('escapistplayer'+vnumber, {
+          height: '390',
+          width: '640'
+        });
+
+        document.getElementById("escapistplayer"+vnumber).src = "https://www.youtube.com/embed/"+vid;
+        //incement down the vnumber
+        vnumber --;
+      }
+
+      while(vnumber > 0); // the cap number is more then none    
+    }
+
+  else{
+
+    console.log("no results");
+    document.getElementById("escapisttitle").innerHTML = "<h2>No results</h2>"   
   }
 }
 
