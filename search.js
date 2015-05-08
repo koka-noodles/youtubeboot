@@ -84,7 +84,7 @@ function onSearchResponsestucky(response) { // stuckman
   console.log("on search response +response "+response);
   showResponse(response); 
   var vnumber = response.pageInfo.totalResults;
-  var capnum = 5;   // a cap on results delt with
+  
 
     if(vnumber > capnum){
       vnumber = capnum;
@@ -92,7 +92,7 @@ function onSearchResponsestucky(response) { // stuckman
     }
 
     var pnumber = 2;
-    console.log("total results = vnumber "+vnumber);
+    console.log("stucky total results = vnumber "+vnumber);
   
     if(vnumber > 0){
 
@@ -109,8 +109,8 @@ function onSearchResponsestucky(response) { // stuckman
         vid = response.items[vindex].id.videoId;  
 
         player = new YT.Player('stuckytplayer'+vnumber, {
-          height: '390',
-          width: '640'
+          height: 'auto',
+          width: 'auto'
         });
 
         document.getElementById("stuckytplayer"+vnumber).src = "https://www.youtube.com/embed/"+vid;
@@ -124,7 +124,7 @@ function onSearchResponsestucky(response) { // stuckman
   else{
 
     console.log("no results");
-    document.getElementById("stuckytitle").innerHTML = "<h2>No results</h2>"   
+    document.getElementById("stuckytitle").innerHTML = "<h2>No results From Stuckman</h2>"   
   }
 }
 
@@ -134,7 +134,7 @@ function onSearchResponseJoe(response) { // a joe
   console.log("on search response +response "+response);
   showResponse(response); 
   var vnumber = response.pageInfo.totalResults;
-  var capnum = 5;   // a cap on results delt with
+  
 
     if(vnumber > capnum){
       vnumber = capnum;
@@ -142,7 +142,7 @@ function onSearchResponseJoe(response) { // a joe
     }
 
     var pnumber = 2;
-    console.log("total results = vnumber "+vnumber);
+    console.log("Joe total results = vnumber "+vnumber);
   
     if(vnumber > 0){
 
@@ -159,8 +159,8 @@ function onSearchResponseJoe(response) { // a joe
         vid = response.items[vindex].id.videoId;  
 
         player = new YT.Player('joeytplayer'+vnumber, {
-          height: '390',
-          width: '640'
+          height: 'auto',
+          width: 'auto'
         });
 
         document.getElementById("joeytplayer"+vnumber).src = "https://www.youtube.com/embed/"+vid;
@@ -174,7 +174,7 @@ function onSearchResponseJoe(response) { // a joe
   else{
 
     console.log("no results");
-    document.getElementById("joeytitle").innerHTML = "<h2>No results</h2>"   
+    document.getElementById("joeytitle").innerHTML = "<h2>No results from Angry Joe</h2>"   
   }
 }
 
@@ -184,7 +184,7 @@ function onSearchResponseKermode(response) { // kermode
   console.log("on search response +response "+response);
   showResponse(response); 
   var vnumber = response.pageInfo.totalResults;
-  var capnum = 5;   // a cap on results delt with
+  
 
     if(vnumber > capnum){
       vnumber = capnum;
@@ -192,7 +192,7 @@ function onSearchResponseKermode(response) { // kermode
     }
 
     var pnumber = 2;
-    console.log("total results = vnumber "+vnumber);
+    console.log("Kermode total results = vnumber "+vnumber);
   
     if(vnumber > 0){
 
@@ -209,8 +209,8 @@ function onSearchResponseKermode(response) { // kermode
         vid = response.items[vindex].id.videoId;  
 
         player = new YT.Player('kermodeplayer'+vnumber, {
-          height: '390',
-          width: '640'
+          height: 'auto',
+          width: 'auto'
         });
 
         document.getElementById("kermodeplayer"+vnumber).src = "https://www.youtube.com/embed/"+vid;
@@ -224,7 +224,7 @@ function onSearchResponseKermode(response) { // kermode
   else{
 
     console.log("no results");
-    document.getElementById("kermodetitle").innerHTML = "<h2>No results</h2>"   
+    document.getElementById("kermodetitle").innerHTML = "<h2>No results from kermode</h2>"   
   }
 }
 
@@ -234,7 +234,7 @@ function onSearchResponseEscapist(response) { // the escapist
   console.log("on search response +response "+response);
   showResponse(response); 
   var vnumber = response.pageInfo.totalResults;
-  var capnum = 5;   // a cap on results delt with
+  
 
     if(vnumber > capnum){
       vnumber = capnum;
@@ -242,7 +242,7 @@ function onSearchResponseEscapist(response) { // the escapist
     }
 
     var pnumber = 2;
-    console.log("total results = vnumber "+vnumber);
+    console.log("Escapist total results = vnumber "+vnumber);
   
     if(vnumber > 0){
 
@@ -259,8 +259,8 @@ function onSearchResponseEscapist(response) { // the escapist
         vid = response.items[vindex].id.videoId;  
 
         player = new YT.Player('escapistplayer'+vnumber, {
-          height: '390',
-          width: '640'
+          height: 'auto',
+          width: 'auto'
         });
 
         document.getElementById("escapistplayer"+vnumber).src = "https://www.youtube.com/embed/"+vid;
@@ -274,10 +274,11 @@ function onSearchResponseEscapist(response) { // the escapist
   else{
 
     console.log("no results");
-    document.getElementById("escapisttitle").innerHTML = "<h2>No results</h2>"   
+    document.getElementById("escapisttitle").innerHTML = "<h2>No results from the escapist</h2>"   
   }
 }
 
+var capnum = 4;   // a cap on results delt with
 // Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
