@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lucascss.css" rel="stylesheet">
     <script src="search.js" type="text/javascript"></script>
     <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 
@@ -22,84 +23,57 @@
   <body>
     
     
-        <form id="myvids"> 
-        <div>  
-        <input type="text" name="value" id='value' />
-        <input type="button" value="submit" onclick="verifyorder();"  />
-        </div>       
-
-        <div class="row">
-          <div class="col-md-6">.col-md-6
-            <div id="stuckytitle"></div>
-            <div id="stuckytplayer0"></div>
-            <div id="stuckytplayer1"></div>
-            <div id="stuckytplayer2"></div>
-            <div id="stuckytplayer3"></div>
-            <div id="stuckytplayer4"></div>
-            <div id="stuckytplayer5"></div>
-            <div id="stuckytplayer6"></div>
-          </div>
-
-          <div class="col-md-6">.col-md-6
-            <div id="joeytitle"></div>
-            <div id="joeytplayer0"></div>
-            <div id="joeytplayer1"></div>
-            <div id="joeytplayer2"></div>
-            <div id="joeytplayer3"></div>
-            <div id="joeytplayer4"></div>
-            <div id="joeytplayer5"></div>
-            <div id="joeytplayer6"></div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">.col-md-6
-            <div id="kermodetitle"></div>
-            <div id="kermodeplayer0"></div>
-            <div id="kermodeplayer1"></div>
-            <div id="kermodeplayer2"></div>
-            <div id="kermodeplayer3"></div>
-            <div id="kermodeplayer4"></div>
-            <div id="kermodeplayer5"></div>
-            <div id="kermodeplayer6"></div>
-          </div>
-
-          <div class="col-md-6">.col-md-6
-            <div id="escapisttitle"></div>
-            <div id="escapistplayer0"></div>
-            <div id="escapistplayer1"></div>
-            <div id="escapistplayer2"></div>
-            <div id="escapistplayer3"></div>
-            <div id="escapistplayer4"></div>
-            <div id="escapistplayer5"></div>
-            <div id="escapistplayer6"></div>
-          </div>
-        </div>
-       
-        
-
-    
-       
-        
-        
-      
-      <div>
-          <pre id="response"></pre>  <!--    -->
+    <div class="row">
+      <div class="col-lg-4">
       </div>
-        
-
-        <div><h4>Stuckman UCCqEeDAUf4Mg0GgEN658tkA</h4></div>
-        <div><h4>Angry Joe UCsgv2QHkT2ljEixyulzOnUQ</h4></div>
-        <div><h4>kermode and mayo UCCxKPNMqjnqbxVEt1tyDUsA</h4></div>
-        <div><h4>the escapist to the movies UCADQiLMJMO3HUMvePgscTMg</h4></div>
-        
-        <div><h4>To obtain the channel id you can view the source code of channel page and find there eg: data-channel-external-id="UCjXfkj5iapKHJrhYfAF9ZGg" this will be the channel id you are looking for!</h4></div>
+      <div class="col-lg-4" id="title">
+        <h3>The movie database scraper</h3>
       </div>
-    </div>  
+      <div class="col-lg-4">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+        <div class="input-group" id="myvids">
+          <input type="text" class="form-control" placeholder="Search for..." name="value" id='value'>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" value="submit" onclick="getmovies();">Go!</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-lg-4">
+      </div>
+    </div>
+
+
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    var Request = new XMLHttpRequest();
+
+    Request.open('GET', 'http://private-anon-8a716ff2c-themoviedb.apiary-mock.com/3/configuration');
+
+    Request.setRequestHeader('Accept', 'application/json');
+
+    Request.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        console.log('Status:', this.status);
+        console.log('Headers:', this.getAllResponseHeaders());
+        console.log('Body:', this.responseText);
+      }
+    };
+
+    Request.send(JSON.stringify(body));
+
+    </script>
+
+
   </body>
 </html>
